@@ -1,0 +1,32 @@
+{
+  "name": "friend_finder",
+  "version": "1.0.0",
+  "description": "A friend finding full stack app using Node and Express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Treudey/FriendFinder.git"
+  },
+  "keywords": [
+    "Express",
+    "Node",
+    "NPM"
+  ],
+  "author": "Alex Treude",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Treudey/FriendFinder/issues"
+  },
+  "homepage": "https://github.com/Treudey/FriendFinder#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}

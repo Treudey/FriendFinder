@@ -1,3 +1,6 @@
+
+const evtSource = new EventSource('../../server.js');
+
 const questions = [
     {
         id: 'Q1',
@@ -41,13 +44,35 @@ const questions = [
     },
 ];
 
+const testImage = function(url, timeoutT) {
+    return new Promise(function (resolve, reject) {
+        var timeout = timeoutT || 5000;
+        var timer, img = new Image();
+        img.onerror = img.onabort = function () {
+            clearTimeout(timer);
+            reject("error");
+        };
+        img.onload = function () {
+            clearTimeout(timer);
+            resolve("success");
+        };
+        timer = setTimeout(function () {
+            // reset .src to invalid URL so it stops previous
+            // loading, but doesn't trigger new load
+            img.src = "//!!!!/test.jpg";
+            reject("timeout");
+        }, timeout);
+        img.src = url;
+    });
+};
+
 // Creates all the radio buttons in the form
 for (const q of questions) {
     let html = `<fieldset class="form-group">
             <legend>%question%</legend>
             <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="%id%" id="%id%a" value="option1" required>
-            <label class="form-check-label" for="%id%a">1 (Strongly Agree)</label>
+            <label class="form-check-label" for="%id%a">1 (Strongly Disagree)</label>
             </div>
             <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="%id%" id="%id%b" value="option2">
@@ -63,7 +88,7 @@ for (const q of questions) {
             </div>
             <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="%id%" id="%id%e" value="option5">
-            <label class="form-check-label" for="%id%e">5 (Strongly Disagree)</label>
+            <label class="form-check-label" for="%id%e">5 (Strongly Agree)</label>
             </div>
             </fieldset>`;
     // Replace placeholder text with some actual data
@@ -72,7 +97,14 @@ for (const q of questions) {
     document.querySelector('.btn').insertAdjacentHTML('beforebegin', html);
 }
 
-document.querySelector('.btn').addEventListener('click', event => {
+document.querySelector('.submit').addEventListener('click', event => {
+    event.preventDefault();
+    let url = document.querySelector('#link_field').value;
+    const form = document.querySelector('form');
 
+    testImage(url)
+        .then(res => form.submit())
+        .catch(err => {
+            $('#urlModal').modal('show');
+        });
 });
-

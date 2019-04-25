@@ -96,6 +96,11 @@ for (const q of questions) {
     document.querySelector('.btn').insertAdjacentHTML('beforebegin', html);
 }
 
+// Shows a modal if their is dynamically generated info in it
+if (document.querySelector('#friendModal_name').textContent !== '%name%') {
+    $('#friendModal').modal('show');
+}
+
 document.querySelector('.submit').addEventListener('click', event => {
     event.preventDefault();
     let url = document.querySelector('#link_field').value;

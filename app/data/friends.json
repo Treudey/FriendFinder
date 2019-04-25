@@ -45,7 +45,11 @@
       3,
       3,
       2
-    ]
+    ],
+    "match": {
+      "name": "John Dillinger",
+      "photo": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzNzkyMDA1NjQ0/john-dillinger-9274804-1-402.jpg"
+    }
   },
   {
     "name": "James Hetfield",
@@ -125,7 +129,11 @@
       1,
       2,
       3
-    ]
+    ],
+    "match": {
+      "name": "Bugs Bunny",
+      "photo": "https://cdn.vox-cdn.com/thumbor/TiwabydzgLgAVBjjJvAO_dnKo_o=/0x16:1103x751/1200x800/filters:focal(0x16:1103x751)/cdn.vox-cdn.com/uploads/chorus_image/image/46840054/Screenshot_2015-07-27_15.11.13.0.0.png"
+    }
   },
   {
     "name": "Kim Jong-un",
@@ -190,5 +198,65 @@
       4,
       2
     ]
+  },
+  {
+    "name": "Yosemite Sam",
+    "photo": "https://cdn1.bigcommerce.com/server4000/50feirk/products/2734/images/8978/GMS_822_Yosemite_Sam_B11S2__28258.1426639899.1280.1280.jpg?c=2",
+    "scores": [
+      5,
+      4,
+      2,
+      1,
+      2,
+      3,
+      4,
+      5,
+      2,
+      3
+    ],
+    "match": {
+      "name": "Idi Amin",
+      "photo": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE1ODA0OTcxNTM4MDIzOTQ5/idi-amin-dada-9183487-1-402.jpg"
+    }
+  },
+  {
+    "name": "Bugs Bunny",
+    "photo": "https://cdn.vox-cdn.com/thumbor/TiwabydzgLgAVBjjJvAO_dnKo_o=/0x16:1103x751/1200x800/filters:focal(0x16:1103x751)/cdn.vox-cdn.com/uploads/chorus_image/image/46840054/Screenshot_2015-07-27_15.11.13.0.0.png",
+    "scores": [
+      1,
+      2,
+      1,
+      1,
+      2,
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "match": {
+      "name": "Idi Amin",
+      "photo": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTE1ODA0OTcxNTM4MDIzOTQ5/idi-amin-dada-9183487-1-402.jpg"
+    }
+  },
+  {
+    "name": "John Dillinger",
+    "photo": "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cg_face%2Cq_auto:good%2Cw_300/MTIwNjA4NjMzNzkyMDA1NjQ0/john-dillinger-9274804-1-402.jpg",
+    "scores": [
+      4,
+      4,
+      3,
+      2,
+      5,
+      3,
+      4,
+      3,
+      4,
+      4
+    ],
+    "match": {
+      "name": "John Legend",
+      "photo": "https://timedotcom.files.wordpress.com/2017/04/time-100-2017-john-legend.jpg?w=560"
+    }
   }
 ]

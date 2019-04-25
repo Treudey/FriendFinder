@@ -5,11 +5,9 @@ const express = require('express');
 
 const rootDir = require('../util/path');
 
-const app = express();
 const router = express.Router();
 
-
-
+// this is the function that finds the best match for a user
 const findFriend = (friendArr, user) => {
     let matchedFriend;
     let bestDifference = 40;
@@ -33,11 +31,13 @@ const findFriend = (friendArr, user) => {
 
 router.get('/friends', (req, res) => {
     // display JSON of all friends
-    res.json(friendsData);
+    fs.readFile(path.join(rootDir, 'app', 'data', 'friends.json'), (err, data) => {
+        const friendsData = JSON.parse(data);
+        res.json(friendsData);
+    });
 });
 
 router.post('/friends', (req, res) => {
-    // deal with submitted data
 
     const data  = fs.readFileSync(path.join(rootDir, 'app', 'data', 'friends.json'));
     let friendsData = JSON.parse(data);
@@ -55,22 +55,36 @@ router.post('/friends', (req, res) => {
         }
     }
     
-    let matchFriend = findFriend(friendsData, userData);
-    matchFriend = JSON.stringify(matchFriend, null, 2);
+    // find the corrosponding matched friend and add it to the user data
+    const matchFriend = findFriend(friendsData, userData);
+    const simpleMatchData = {
+        name: matchFriend.name,
+        photo: matchFriend.photo
+    };
 
-    fs.writeFileSync(path.join(rootDir, 'app', 'data', 'matchedFriend.json'), matchFriend);
+    userData.match = simpleMatchData;
 
+    //update the match friends match with the current user
+    const simpleUserData = {
+        name: userData.name,
+        photo: userData.photo
+    }
+    matchFriend.match = simpleUserData;
+    
     friendsData.push(userData);
+    
+    // create a string to send as a query to '/survey' to interpret and show a modal
+    const queryUserName = encodeURIComponent(userData.name);
     friendsData = JSON.stringify(friendsData, null, 2);
 
-    fs.writeFile(path.join(rootDir, 'app', 'data', 'friends.json'), friendsData, (err) => {
+    fs.writeFile(path.join(rootDir, 'app', 'data', 'friends.json'), friendsData, err => {
         if (err) console.log(err);
         console.log("Successfully Written to File.");
     });
 
     console.log(matchFriend);
 
-    res.redirect('/survey');
+    res.redirect('/survey?name=' + queryUserName);
 });
 
 module.exports = router;

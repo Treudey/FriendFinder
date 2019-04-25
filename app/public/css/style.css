@@ -18,3 +18,7 @@ body {
     border-color: #008080;
     margin-bottom: 2.5rem;
 }
+
+.modal_img {
+    width: 25rem;
+}

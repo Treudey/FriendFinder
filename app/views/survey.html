@@ -50,7 +50,7 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Validation Modal -->
   <div class="modal fade" id="urlModal" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
@@ -68,17 +68,17 @@
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- Match Modal -->
   <div class="modal fade" id="friendModal" role="dialog">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
+      <div class="modal-content text-center">
         <div class="modal-header">
-          <h4 class="modal-title">Best Match</h4>
+          <h2 class="modal-title">Best Match</h2>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
-          <p>%name%</p>
-          <img src="%img%" alt="%name%">
+          <h3 id="friendModal_name">%name%</h3>
+          <img class="modal_img" src="%img%" alt="photo of friend">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

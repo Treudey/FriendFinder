@@ -77,13 +77,9 @@ router.post('/friends', (req, res) => {
     const queryUserName = encodeURIComponent(userData.name);
     friendsData = JSON.stringify(friendsData, null, 2);
 
-    fs.writeFile(path.join(rootDir, 'app', 'data', 'friends.json'), friendsData, err => {
-        if (err) console.log(err);
-        console.log("Successfully Written to File.");
-    });
+    fs.writeFile(path.join(rootDir, 'app', 'data', 'friends.json'), friendsData, err => { if (err) throw err; });
 
-    console.log(matchFriend);
-
+    // redirect user to survey along with query of the user's name
     res.redirect('/survey?name=' + queryUserName);
 });
 

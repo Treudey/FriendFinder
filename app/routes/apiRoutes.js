@@ -2,16 +2,13 @@ const path = require('path');
 const fs = require('fs');
 
 const express = require('express');
-var cookieParser = require("cookie-parser");
 
 const rootDir = require('../util/path');
 
+const app = express();
 const router = express.Router();
 
-app.use(cookieParser());
 
-const data  = fs.readFileSync(path.join(rootDir, 'app', 'data', 'friends.json'));
-let friendsData = JSON.parse(data);
 
 const findFriend = (friendArr, user) => {
     let matchedFriend;
@@ -41,6 +38,9 @@ router.get('/friends', (req, res) => {
 
 router.post('/friends', (req, res) => {
     // deal with submitted data
+
+    const data  = fs.readFileSync(path.join(rootDir, 'app', 'data', 'friends.json'));
+    let friendsData = JSON.parse(data);
     
     let userData = {
         name: req.body.username,
@@ -55,8 +55,10 @@ router.post('/friends', (req, res) => {
         }
     }
     
-    const matchFriend = findFriend(friendsData, userData);
-    delete matchFriend.scores;
+    let matchFriend = findFriend(friendsData, userData);
+    matchFriend = JSON.stringify(matchFriend, null, 2);
+
+    fs.writeFileSync(path.join(rootDir, 'app', 'data', 'matchedFriend.json'), matchFriend);
 
     friendsData.push(userData);
     friendsData = JSON.stringify(friendsData, null, 2);
@@ -68,8 +70,6 @@ router.post('/friends', (req, res) => {
 
     console.log(matchFriend);
 
-    // create a cookie to send friend data in response
-    res.cookie('friend', JSON.stringify(matchFriend), { httpOnly: true });
     res.redirect('/survey');
 });
 

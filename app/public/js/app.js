@@ -1,4 +1,3 @@
-
 const evtSource = new EventSource('../../server.js');
 
 const questions = [
@@ -101,6 +100,7 @@ document.querySelector('.submit').addEventListener('click', event => {
     event.preventDefault();
     let url = document.querySelector('#link_field').value;
     const form = document.querySelector('form');
+    //const queryUrl = form.getAttribute('action');
 
     testImage(url)
         .then(res => form.submit())

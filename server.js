@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, 'app', 'public')));
 app.use('/api', apiRoutes);
 app.use(htmlRoutes);
 
-app.use((req, res, next) => {
+app.use((req, res) => {
     res.status(404).sendFile(path.join(__dirname, 'app', 'views', '404.html'));
 });
 

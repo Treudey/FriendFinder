@@ -7,19 +7,33 @@ const rootDir = require('../util/path');
 
 const router = express.Router();
 
+
+
 router.get('/survey', (req, res) => {
-    if (req.cookies['friend']) {
-        let friendData = JSON.parse(req.cookies['friend']);
-        res.clearCookie('friend', { httpOnly: true });
+
+    const matchedFriendPath = path.join(rootDir, 'app', 'data', 'matchedFriend.json');
+    let data  = fs.readFileSync(matchedFriendPath);
+    let friendData; 
+
+    try {
+        friendData = JSON.parse(data);
+        
+    } catch (err) {
+        data = null;
+    }
+    
+    if (friendData) {
+        fs.truncate(matchedFriendPath, 0, () => console.log('file emptied'));
         
         fs.readFile(path.join(rootDir, 'app', 'views', 'survey.html'), (err, html) => {
             if (err) throw err;
 
+            html = html.toString('utf8');
             html = html.replace('%img%', friendData.photo);
             html = html.replace(/%name%/g, friendData.name);
+            res.send(html);
         });
-
-        res.send(html);
+    
     } else {
         res.sendFile(path.join(rootDir, 'app', 'views', 'survey.html'));
     }

@@ -12,17 +12,17 @@ const findFriend = (friendArr, user) => {
     let matchedFriend;
     let bestDifference = 40;
 
-    friendArr.forEach(el => {
+    friendArr.forEach(friend => {
         let totalDifference = 0;
-        for (let i = 0; i < el.scores.length; i++) {
-            const friendScore = user.scores[i]
-            const myScore = el.scores[i];
+        for (let i = 0; i < friend.scores.length; i++) {
+            const myScore = user.scores[i]
+            const friendScore = friend.scores[i];
             totalDifference += Math.abs(parseInt(myScore) - parseInt(friendScore));
         }
 
         if (totalDifference < bestDifference) {
             bestDifference = totalDifference;
-            matchedFriend = el;
+            matchedFriend = friend;
         }
     });
 

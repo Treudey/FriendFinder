@@ -1,9 +1,12 @@
 # FriendFinder
 This full-stack site that matches the most compatible users together using Express and Node. It takes a users's name, photo, and asnwers to ten questions then finds the most compatible friend in the FriendFinder database!
 
-This application uses Express to handle routing. And is deployed on Heroku.
+This application uses Express to handle routing and is deployed on Heroku.
 
-### Technologies
+## Live Site
+https://enigmatic-springs-20660.herokuapp.com
+
+## Technologies
   * Node.js
   * Express.js
   * Heroku
@@ -42,3 +45,9 @@ The user's most compatible friend is determined in the following way:
        * User 2: `[3, 2, 6, 4, 5, 1, 2, 5, 4, 1]`
        * Total Difference: **2 + 1 + 2 =** **_5_**
     * The closest match will be the user with the least amount of difference.
+    
+## Author
+* **Alex Treude**  [Treudey](https://github.com/Treudey)
+
+## License
+MIT

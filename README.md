@@ -47,7 +47,7 @@ The user's most compatible friend is determined in the following way:
     * The closest match will be the user with the least amount of difference.
     
 ## Author
-* **Alex Treude**  [Treudey](https://github.com/Treudey)
+**Alex Treude**  [Treudey](https://github.com/Treudey)
 
 ## License
 MIT
